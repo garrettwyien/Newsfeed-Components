@@ -86,6 +86,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Test Title',
+    date: 'Jan 1st, 2021',
+    firstParagraph: `This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.`,
+
+    secondParagraph: `This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. `,
+
+    thirdParagraph: `This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test. This is a test.`
   }
 ];
 
@@ -115,6 +124,9 @@ const data = [
   Refresh the page to see the new article.
 */
 
+const articlesDiv = document.querySelector('div.articles')
+console.log(articlesDiv)
+
 function articleMaker(artObj) {
   const article = document.createElement('div')
   const title = document.createElement('h2')
@@ -139,7 +151,18 @@ function articleMaker(artObj) {
     article.classList.toggle('article-open')
   })
 
-  console.log(article)
+  title.textContent = artObj.title;
+  date.textContent = artObj.date;
+  paraOne.textContent = artObj.firstParagraph
+  paraTwo.textContent = artObj.secondParagraph
+  paraThree.textContent = artObj.thirdParagraph
+  expButton.textContent = '+'
+
+
+  return article;
 };
-  
-articleMaker(data[1]);
+
+data.forEach(obj => {
+  const articleObj = articleMaker(obj)
+  articlesDiv.appendChild(articleObj);
+})
